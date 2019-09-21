@@ -1,0 +1,16 @@
+p {
+    margin-top: 4px;
+    margin-left: 4px;
+    font-family: verdana;
+    font-size: 12px;
+}
+.p2 {
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-family: Verdana;
+    font-size: 15px;
+  }
+

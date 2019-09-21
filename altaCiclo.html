@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="css/p.css">
+	<link rel="stylesheet" href="css/button.css">
+	<link rel="stylesheet" href="css/table.css">
+	<style>
+		.button1 {
+			width: 160px;
+			height: 40px;
+		}
+	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="altaCiclo();">
+
+	<button class="button button1" onclick="window.location.href = 'index.html';"
+	style="top: 10px;left: 10px;position: absolute;"><b>VOLVER</b></button>
+
+	<p style="top: 80px;left: 50px;position: absolute;">Ciclo</p>
+    <input type="number" id="ciclo"
+	style="width:256px;height:22px;top: 80px;left: 150px;position: absolute;">
+
+	<p style="top: 80px;left: 450px;position: absolute;">Fecha de Inicio</p>
+	<input type="date" id="fechaInicio"
+	style="width:256px;height:22px;top: 80px;left: 550px;position: absolute;">
+
+	<p style="top: 120px;left: 450px;position: absolute;">Fecha de fin</p>
+	<input type="date" id="fechaFin"
+	style="width:256px;height:22px;top: 120px;left: 550px;position: absolute;">
+
+	<p style="top: 120px;left: 50px;position: absolute;">Estado</p>
+	<select type="text" id="estado"
+	style="width:260px;height:28px;top: 120px;left: 150px;position: absolute;">
+		<option value="p">Próximo</option>
+		<option value="v">Vigente</option>
+		<option value="c">Cerrado</option>
+	</select>
+
+	<p style="top: 160px;left: 50px;position: absolute;">Notas</p>
+	<input type="text" id="observacion"
+	style="width:256px;height:22px;top: 160px;left: 150px;position: absolute;">
+
+	<div id="area" style="top: 240px;left: 50px;position: absolute; overflow-x:auto;"></div>
+
+	<script src="js/admTabla.js"></script>
+    <script src="js/altaCiclo.js"></script>
+	
+</body>
+</html>

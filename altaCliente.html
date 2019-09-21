@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="css/p.css">
+	<link rel="stylesheet" href="css/button.css">
+	<link rel="stylesheet" href="css/table.css">
+	<style>
+		.button1 {
+			width: 160px;
+			height: 40px;
+		}
+	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="altaCliente();">
+
+	<button class="button button1" onclick="window.location.href = 'index.html';"
+	style="top: 10px;left: 10px;position: absolute;"><b>VOLVER</b></button>
+
+	<p style="top: 80px;left: 50px;position: absolute;">Nombre</p>
+	<input type="text" id="nombre"
+	style="width:256px;height:22px;top: 80px;left: 150px;position: absolute;">
+
+	<p style="top: 80px;left: 450px;position: absolute;">Mail</p>
+	<input type="text" id="mail"
+	style="width:256px;height:22px;top: 80px;left: 550px;position: absolute;">
+
+	<p style="top: 120px;left: 50px;position: absolute;">Telefono 1</p>
+	<input type="text" id="telefono1"
+	style="width:256px;height:22px;top: 120px;left: 150px;position: absolute;">
+
+	<p style="top: 120px;left: 450px;position: absolute;">telefono 2</p>
+	<input type="text" id="telefono2"
+	style="width:256px;height:22px;top: 120px;left: 550px;position: absolute;">
+
+	<p style="top: 160px;left: 50px;position: absolute;">Direccion</p>
+	<input type="text" id="direccion"
+	style="width:256px;height:22px;top: 160px;left: 150px;position: absolute;">
+
+	<div id="area" style="top: 240px;left: 50px;position: absolute; overflow-x:auto;"></div>
+
+	<script src="js/admTabla.js"></script>
+    <script src="js/altaCliente.js"></script>
+	
+</body>
+</html>
