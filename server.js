@@ -22,7 +22,7 @@ mongoose.connect(dbConfig.url, {
 }).then(() => {
     console.log("Successfully connected to the database");    
 }).catch(err => {
-    console.log('Mierda! No puedo conectar a la base...', err, 'mas:', dbConfig.url);
+    console.log('Mierda! No puedo conectar a la base...', err);
     process.exit();
 });
 
