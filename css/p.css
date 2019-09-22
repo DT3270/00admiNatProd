@@ -4,8 +4,14 @@ p {
     font-family: verdana;
     font-size: 12px;
 }
+.p1 {
+    font-family: Verdana;
+    font-size: 11px;
+    margin-top: 6px;
+    margin-bottom: 2px;
+  }
 .p2 {
-    padding: 18px;
+    padding: 19px;
     width: 100%;
     border: none;
     text-align: left;

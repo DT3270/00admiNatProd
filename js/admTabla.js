@@ -185,11 +185,11 @@ function crearTabla(tit, tab) {
     );
 
     $( api.column( 4 ).footer() ).html(
-      '$'+precioUnit 
+      '$'+precioUnit.toFixed(2) 
     );
 
     $( api.column( 5 ).footer() ).html(
-      '$'+precio 
+      '$'+precio.toFixed(2) 
     );
 
     $( api.column( 6 ).footer() ).html(
@@ -197,7 +197,7 @@ function crearTabla(tit, tab) {
     );
 
     $( api.column( 7 ).footer() ).html(
-      '$'+ganancia 
+      '$'+ganancia.toFixed(2) 
     );
     
     $( api.column( 8 ).footer() ).html(
