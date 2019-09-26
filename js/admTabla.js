@@ -1,7 +1,6 @@
 function eliminarTabla() {
   // get the reference for the body
   var body = document.getElementsByTagName("body")[0];
-  console.log('body1', body)
   var tbl = document.getElementById('tabla_wrapper');
   body.removeChild(tbl);
 };
