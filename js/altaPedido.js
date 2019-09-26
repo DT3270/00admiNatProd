@@ -140,7 +140,7 @@
           button.innerText = 'eliminar';
           button.id = json[i]._id;
           button.addEventListener('click', function(e){
-            eliminarPedido(e.path[0].id);
+            eliminarPedido(e.target.id);
           });
           linea.push(button);
           tabla.push(linea);
