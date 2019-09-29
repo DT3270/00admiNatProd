@@ -74,6 +74,18 @@ exports.findAll = (req, res) => {
     });
 };
 
+// Consultar todos los pedidos
+exports.findOne = (req, res) => {
+    Pedido.find(req.params.producto)
+    .then(pedidos => {
+        res.send(pedidos);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Error en la consulta de los pedidos."
+        });
+    });
+};
+
 // Eliminar el pedido con ID
 exports.delete = (req, res) => {
     Pedido.findByIdAndRemove(req.params.pedidoId)
