@@ -38,6 +38,11 @@ exports.create = (req, res) => {
             message: "Debe puntos"
         });
     }
+    if(!req.body.paraMi) {
+        return res.status(400).send({
+            message: "Debe informar % de ganancia"
+        });
+    }
 
     // Crear el pedido
     const pedido = new Pedido({
@@ -48,6 +53,7 @@ exports.create = (req, res) => {
         precio: req.body.precio,
         porGanancia: req.body.porGanancia,
         puntos: req.body.puntos,
+        paraMi: req.body.paraMi,
         notas: req.body.notas
     });
 

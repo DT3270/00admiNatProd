@@ -1,6 +1,13 @@
 
   function altaPedido () {
 
+    console.log('altaPedido');
+    let session = getQueryVariable('id');
+    console.log('session1:', session);
+    let miString = atob(session);
+    console.log('session2:', session);
+    console.log(miString.slice(5, -4));  
+
     document.getElementById('selCiclo').addEventListener('change', function (e) {
       eliminarTabla();
       obtenerPedidos();  
@@ -39,10 +46,26 @@
     document.getElementById('porGanancia').addEventListener('keypress', function (e) {
       var key = e.which || e.keyCode;
       if (key === 13) { // 13 is enter
+        document.getElementById('check1').focus();
+      }
+    }); 
+
+    document.getElementById('check1').addEventListener('keypress', function (e) {
+      var key = e.which || e.keyCode;
+      if (key === 13) { // 13 is enter
         document.getElementById('cantidad').focus();
       }
     }); 
-  
+
+    document.getElementById('check1').addEventListener('click', function (e) {
+      let check1 = document.getElementById('check1');
+      if (check1.value == 's') {
+        check1.value = 'n'
+      } else {
+        check1.value = 's'        
+      } 
+    }); 
+
     document.getElementById('cantidad').addEventListener('keypress', function (e) {
       var key = e.which || e.keyCode;
       if (key === 13) { // 13 is enter
@@ -67,6 +90,8 @@
   };
 
   function obtenerPedidos() {
+    // Bloqueo la pantalla
+    bloquear();
     // Consulta la base y deja la respuesta en la variabla json.
     var request = new XMLHttpRequest();
     var apiUrl = urlServer + "/pedidos";
@@ -74,7 +99,7 @@
     request.setRequestHeader("Content-Type", "application/json"); 
     request.send();
     request.onload = function () {
-        
+      desbloquear();  
       var json = JSON.parse(request.response);
 
       // Guardo la opción seleccionada
@@ -168,6 +193,7 @@
     var cantidad = document.getElementById('cantidad');
     var precio = document.getElementById('precio');
     var porGanancia = document.getElementById('porGanancia');
+    var paraMi = document.getElementById('check1');
     var puntos = document.getElementById('puntos');
     var notas = document.getElementById('notas');
 
@@ -179,6 +205,7 @@
     miPedido.precio = precio.value;    
     miPedido.porGanancia = porGanancia.value;
     miPedido.puntos = puntos.value;
+    miPedido.puntos = paraMi.value;
     miPedido.notas = notas.value;
 
     ciclo.value = "";
@@ -188,6 +215,7 @@
     porGanancia.value = "";
     cantidad.value = "";
     puntos.value = "";
+    paraMi.value = "n";
     notas.value = "";
 
     var miString = JSON.stringify(miPedido);

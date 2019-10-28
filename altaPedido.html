@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 	<link rel="icon" type="image/png" href="hnet.com-image.ico" />
+	<link rel="stylesheet" href="css/check.css">	
 	<link rel="stylesheet" href="css/select.css">	
 	<link rel="stylesheet" href="css/out.css">
 	<link rel="stylesheet" href="css/p.css">
+	<link rel="stylesheet" href="css/div.css">
 	<link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="css/table.css">
 	<style>
@@ -18,104 +20,134 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Adminat - Pedidos</title>
 </head>
-<body onload="altaPedido();">
+<body onload="altaPedido();" style="background-repeat: no-repeat; margin-top: 40px;">
 
+	<!-- Link para usar dataTables de jQuery -->
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-	
-	<div id="head1" style="top: 0px;width:100%;height:70px;">  
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<!-- Link para usar fontAwesome para el checkBox personalizado -->
+	<script src="https://kit.fontawesome.com/a7218086c0.js" crossorigin="anonymous"></script>
 
-		<div style="float: left; margin-right: 20px">
-			<button class="button button1" onclick="window.location.href = 'index.html';"
-			style="top: 10px;left: 45px;"><b>VOLVER</b></button>
+	<!-- Contenedor principal -->
+	<div style="width: 99%; align-self:center;">
+
+		<!-- Encabezado con totales -->
+		<div id="head1" style="top: 0px;width:90%;height:70px;">  
+
+			<div style="float: left; margin-right: 20px">
+				<button class="button button1" onclick="window.location.href = 'index.html';"
+				style="top: 10px;left: 45px;"><b>VOLVER</b></button>
+			</div>
+
+			<div style="width:250px;float: left;">
+				<p class="p3" id="cantPed">Cantidad de pedidos: </p>
+				<p class="p3" id="totCob">Total a cobrar: </p>
+			</div>
+
+			<div style="width:250px;float: left">
+				<p class="p3" id="cantProd">Cantidad de productos: </p>
+				<p class="p3" id="totPag">Total a pagar: </p>
+			</div>
+
+			<div style="width:250px;float: left">
+				<p class="p3" id="cuanPun">Puntos ganados: </p>
+				<p class="p3" id="cuanGan">Total ganado: </p>
+			</div>
+
+			<div style="float: left; width:160px; height: 40px; margin-top: 2px;">
+				<select class="select-css" id="selCiclo">
+					<option value="0">Ciclo: Todos</option>
+				</select>
+			</div>
+
 		</div>
-
-		<div style="width:250px;float: left;">
-			<p class="p3" id="cantPed">Cantidad de pedidos: </p>
-			<p class="p3" id="totCob">Total a cobrar: </p>
-		</div>
-
-		<div style="width:250px;float: left">
-			<p class="p3" id="cantProd">Cantidad de productos: </p>
-			<p class="p3" id="totPag">Total a pagar: </p>
-		</div>
-
-		<div style="width:250px;float: left">
-			<p class="p3" id="cuanPun">Puntos ganados: </p>
-			<p class="p3" id="cuanGan">Total ganado: </p>
-		</div>
-
-		<div style="float: left; width:160px; height: 40px; margin-top: 2px;">
-			<select class="select-css" id="selCiclo">
-				<option value="0">Ciclo: Todos</option>
-			</select>
-		</div>
-
-	</div>
-	
-	<button type="button" class="collapsible" 
-			style="width:100%;height:60px;border-radius: 4px; margin-top: 20px">Nuevo Pedido</button>
-
-	<div class="content" id="dat1" style="width:100%;">
 		
-		<p class="p1" style="position: relative; ">Ciclo</p>
-		<input type="text" id="ciclo" style="width:30%;height:22px; 
-		position: relative;">
-		</input>
+		<button type="button" class="collapsible" 
+				style="width:100%;height:60px;border-radius: 4px; margin-top: 20px">Nuevo Pedido</button>
 
-		<p class="p1" style="position: relative; ">Cliente</p>
-		<input type="text" id="cliente" style="width:60%;height:22px;
-		position: relative; ">
-		</input>
+		<!-- Divisor para el alta de pedidos -->
+		<div class="content" id="dat1" style="width:90%;">
+			
+			<p class="p1" style="position: relative; ">Ciclo</p>
+			<input type="text" id="ciclo" style="width:30%;height:22px; 
+			position: relative;">
+			</input>
 
-		<p class="p1" style="position: relative; ">Producto</p>
-		<input type="number" id="producto" style="width:30%;height:22px;
-		position: relative; ">
-		</input>
+			<p class="p1" style="position: relative; ">Cliente</p>
+			<input type="text" id="cliente" style="width:60%;height:22px;
+			position: relative; ">
+			</input>
 
-		<p class="p1" style="position: relative; ">Precio</p>
-		<input type="number" id="precio"
-		style="width:30%;height:22px; 
-		position: relative; ">
-		</input>
+			<p class="p1" style="position: relative; ">Producto</p>
+			<input type="number" id="producto" style="width:30%;height:22px;
+			position: relative; ">
+			</input>
 
-		<p class="p1" style="position: relative; ">% de ganancia</p>
-		<input type="number" id="porGanancia"
-		style="width:30%;height:22px; 
-		position: relative; ">
-		</input>
+			<p class="p1" style="position: relative; ">Precio</p>
+			<input type="number" id="precio"
+			style="width:30%;height:22px; 
+			position: relative; ">
+			</input>
 
-		<p class="p1" style="position: relative; ">Cantidad</p>
-		<input type="number" id="cantidad"
-		style="width:30%;height:22px; 
-		position: relative; ">
-		</input>
+			<div style="width:60%; height:50px; position: relative;">
+				<p class="p1" style="position: relative; ">% de ganancia</p>
+				<div style="float: left;width:50%;">
+					<input type="number" id="porGanancia"
+					style="width:100%;height:22px; 
+					position: relative; ">
+					</input>
+				</div>
 
-		<p class="p1" style="position: relative; ">Puntos</p>
-		<input type="number" id="puntos"
-		style="width:30%;height:22px; 
-		position: relative; ">
-		</input>
+				<div style="margin-left: 60%;">
+					<input type="checkbox" class="fancy-check" id="check1" value="n">
+					<label for="check1">			 
+						<span class="p2" style="position: relative; padding: 3px; margin-left: 35px;">Es para mi!</span>
+					</label>
+				</div>
+			</div>
 
-		<p class="p1" style="position: relative; ">Notas</p>
-		<input type="text" id="notas"
-		style="width:60%;height:22px; 
-		position: relative; ">
-		</input>
+			<p class="p1" style="position: relative; ">Cantidad</p>
+			<input type="number" id="cantidad"
+			style="width:30%;height:22px; 
+			position: relative; ">
+			</input>
 
-		<div style="position: relative; margin-top: 20px; margin-bottom: 10px">
-		<button class="button button1" onclick="guardarPedido();";"
-		style="position: relative;"><b>GUARDAR</b></button>
+			<p class="p1" style="position: relative; ">Puntos</p>
+			<input type="number" id="puntos"
+			style="width:30%;height:22px; 
+			position: relative; ">
+			</input>
+
+			<p class="p1" style="position: relative; ">Notas</p>
+			<input type="text" id="notas"
+			style="width:60%;height:22px; 
+			position: relative; ">
+			</input>
+
+			<div style="position: relative; margin-top: 20px; margin-bottom: 10px">
+			<button class="button button1" onclick="guardarPedido();";"
+			style="position: relative;"><b>GUARDAR</b></button>
+			</div>
+
 		</div>
 
-	</div>
-	<div style="width:100%;height:60px;background-color: #eee; margin-top: 20px; 
-	margin-bottom: 20px; border-radius: 4px;"><p class="p2">Mis Pedidos</p></div>
+		<!-- Divisor con mis pedidos, después de esto está la grilla -->
+		<div style="width:100%;height:60px;background-color: #eee; margin-top: 20px; 
+		margin-bottom: 20px; border-radius: 4px;"><p class="p2">Mis Pedidos</p></div>
 
-	<script>  var tabGlob = []; var urlServer = 'https://adminat.herokuapp.com';</script>
+	</div>
+
+	<!-- Pantalla de bloqueo -->
+	<div class='cargando' id='bloqueo' style="display: none">
+		<img src="img/ajax-loader.gif" style="margin-top:35%;">
+		<p>Procesando...</p>
+	</div>
+
+	<!-- Scripts -->
+	<script src="js/variablesGlobales.js"></script>
 	<script src="js/collapse.js"></script>
 	<script src="js/admTabla.js"></script>
     <script src="js/altaPedido.js"></script>
-	
+	<script src="js/bloqueo.js"></script>	
 </body>
 </html>

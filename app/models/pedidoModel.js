@@ -8,6 +8,7 @@ const PedidoSchema = mongoose.Schema({
     precio: Number,
     porGanancia: Number,
     puntos: Number,
+    paraMi: String,
     notas: String
 }, {
     timestamps: true

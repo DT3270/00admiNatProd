@@ -33,9 +33,14 @@ exports.create = (req, res) => {
             message: "Debe informar % de ganancia"
         });
     }
+    if(!req.body.paraMi) {
+        return res.status(400).send({
+            message: "Debe informar el indicador paraMi"
+        });
+    }
     if(!req.body.puntos) {
         return res.status(400).send({
-            message: "Debe puntos"
+            message: "Debe infotmar puntos"
         });
     }
 
