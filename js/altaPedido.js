@@ -2,7 +2,7 @@
   function altaPedido () {
 
     console.log('altaPedido');
-    let session = getQueryVariable('id');
+    let session = window.location.search.substring(1);
     console.log('session1:', session);
     let miString = atob(session);
     console.log('session2:', session);
