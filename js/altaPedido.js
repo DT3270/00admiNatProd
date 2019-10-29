@@ -1,13 +1,6 @@
 
   function altaPedido () {
 
-    console.log('altaPedido');
-    let session = window.location.search.substring(1);
-    console.log('session1:', session);
-    let miString = atob(session);
-    console.log('session2:', session);
-    console.log(miString.slice(5, -4));  
-
     document.getElementById('selCiclo').addEventListener('change', function (e) {
       eliminarTabla();
       obtenerPedidos();  
@@ -204,8 +197,8 @@
     miPedido.cantidad = cantidad.value;
     miPedido.precio = precio.value;    
     miPedido.porGanancia = porGanancia.value;
+    miPedido.paraMi = paraMi.value;
     miPedido.puntos = puntos.value;
-    miPedido.puntos = paraMi.value;
     miPedido.notas = notas.value;
 
     ciclo.value = "";

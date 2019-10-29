@@ -53,6 +53,7 @@ exports.create = (req, res) => {
         precio: req.body.precio,
         porGanancia: req.body.porGanancia,
         puntos: req.body.puntos,
+        paraMi: req.body.paraMi,
         notas: req.body.notas
     });
 
