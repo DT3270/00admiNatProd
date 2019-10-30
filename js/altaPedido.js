@@ -138,10 +138,28 @@
           linea.push(document.createTextNode(json[i].producto));
           linea.push(document.createTextNode(json[i].cantidad));
           linea.push(document.createTextNode('$' + json[i].precio.toFixed(2)));
-          linea.push(document.createTextNode('$' + (json[i].precio * json[i].cantidad).toFixed(2)));
+
+          // Porcentaje de ganancia
           linea.push(document.createTextNode(json[i].porGanancia));
-          var ganancia = (json[i].precio * json[i].porGanancia / 100) * json[i].cantidad;
+
+          if (json[i].paraMi == 's') {
+            var ganancia = 0;  
+            var totalACobrar = json[i].precio * json[i].cantidad - json[i].precio * json[i].porGanancia / 100; 
+          } else {
+            var ganancia = (json[i].precio * json[i].cantidad) * json[i].porGanancia / 100 ;            
+            var totalACobrar = json[i].precio * json[i].cantidad; 
+          }
+
+          // Total a cobrar
+          linea.push(document.createTextNode('$' + totalACobrar.toFixed(2)));
+
+          // Total a pagar
+          var totalAPagar = totalACobrar - ganancia; 
+          linea.push(document.createTextNode('$' + totalAPagar.toFixed(2)));
+
+          // Ganancia
           linea.push(document.createTextNode('$' + ganancia.toFixed(2)));
+
           var puntos = json[i].puntos * json[i].cantidad;
           linea.push(document.createTextNode(puntos));
           linea.push(document.createTextNode(json[i].notas));
@@ -165,7 +183,7 @@
         }; //end-if
       }; //end-for
       tabGlob = tabla;
-      var tit = ["Ciclo", "Cliente", "Producto", "Cantidad", "Precio Unitario", "Precio", "%", "Ganancia", "Puntos", "Notas", ""];
+      var tit = ["Ciclo", "Cliente", "Producto", "Cantidad", "Precio Unitario", "%", "Total a Cobrar", "Total a Pagar", "Ganancia", "Puntos", "Notas", ""];
       crearTabla(tit, tabGlob);
       document.getElementById('cantPed').innerHTML = '<p class="p3">Cantidad de pedidos: <b>' + cantPed + '</b></p>';
       document.getElementById('totPag').innerHTML = '<p class="p3"> Total a pagar: <b>$ ' + (totCob - cuanGan).toFixed(2) + '</b></p>';

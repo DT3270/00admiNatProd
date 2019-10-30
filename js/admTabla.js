@@ -110,7 +110,7 @@ function crearTabla(tit, tab) {
                   }      },
 
     "columnDefs": [
-      {className: "dt-body-center","targets": [0,2,3,4,5,6,7,8]},
+      {className: "dt-body-center","targets": [0,2,3,4,5,6,7,8,9]},
 
     ],
 
@@ -176,65 +176,77 @@ function crearTabla(tit, tab) {
         return intVal(a) + intVal(b);
       }, 0 );
 
-    precio = api
-      .column( 5, { page: 'current'} )
+    totalACobrar = api
+      .column( 6, { page: 'current'} )
       .data()
       .reduce( function (a, b) {
         return intVal(a) + intVal(b);
       }, 0 );
 
-    ganancia = api
+    totalAPagar = api
       .column( 7, { page: 'current'} )
       .data()
       .reduce( function (a, b) {
         return intVal(a) + intVal(b);
       }, 0 );
 
-    puntos = api
+    ganancia = api
       .column( 8, { page: 'current'} )
       .data()
       .reduce( function (a, b) {
         return intVal(a) + intVal(b);
       }, 0 );
 
+      puntos = api
+      .column( 9, { page: 'current'} )
+      .data()
+      .reduce( function (a, b) {
+        return intVal(a) + intVal(b);
+      }, 0 );
+
     // Update footer
+    // Ciclo
     $( api.column( 0 ).footer() ).html(
       ' ' 
     );
-
+    // Cliente
     $( api.column( 1 ).footer() ).html(
       ' ' 
     );
-
+    // Producto
     $( api.column( 2 ).footer() ).html(
       ' ' 
     );
-
+    // Cantidad
     $( api.column( 3 ).footer() ).html(
       cantidad 
     );
-
+    // Precio unitario
     $( api.column( 4 ).footer() ).html(
       '$'+precioUnit.toFixed(2) 
     );
-
+    // Porcentaje
     $( api.column( 5 ).footer() ).html(
-      '$'+precio.toFixed(2) 
-    );
-
-    $( api.column( 6 ).footer() ).html(
       ' ' 
     );
-
+    // Total a cobrar
+    $( api.column( 6 ).footer() ).html(
+      '$'+totalACobrar.toFixed(2) 
+    );
+    // Total a pagar
     $( api.column( 7 ).footer() ).html(
+      '$'+totalAPagar.toFixed(2) 
+    );
+    // Ganancia
+    $( api.column( 8 ).footer() ).html(
       '$'+ganancia.toFixed(2) 
     );
-    
-    $( api.column( 8 ).footer() ).html(
+    // Puntos
+    $( api.column( 9 ).footer() ).html(
       puntos
     );
-
-    $( api.column( 9 ).footer() ).html(
+    // Notas
+    $( api.column( 10 ).footer() ).html(
       ' '
     );
 
