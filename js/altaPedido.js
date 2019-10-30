@@ -226,7 +226,6 @@
     porGanancia.value = "";
     cantidad.value = "";
     puntos.value = "";
-    paraMi.value = "n";
     notas.value = "";
 
     var miString = JSON.stringify(miPedido);
@@ -237,19 +236,19 @@
       eliminarTabla()
       obtenerPedidos()
         };
-      };  
+  };  
     
-    function eliminarPedido(id) {
-      var request = new XMLHttpRequest();
-      var apiUrl = urlServer + "/pedidos/" + id;
-      request.open("delete", apiUrl, true);
-      request.send();
-      request.onload = function () {
-        eliminarTabla();
-        obtenerPedidos();
-        }
-    };
+  function eliminarPedido(id) {
+    var request = new XMLHttpRequest();
+    var apiUrl = urlServer + "/pedidos/" + id;
+    request.open("delete", apiUrl, true);
+    request.send();
+    request.onload = function () {
+      eliminarTabla();
+      obtenerPedidos();
+      }
+  };
 
-    function buscarCliente(cliente) {
-        console.log('ok')
-    };
+  function buscarCliente(cliente) {
+      console.log('ok')
+  };
