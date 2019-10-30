@@ -52,6 +52,8 @@
 
     document.getElementById('check1').addEventListener('click', function (e) {
       let check1 = document.getElementById('check1');
+      console.log('check1', check1.style)
+      console.log('check1', check1.class)
       if (check1.value == 's') {
         check1.value = 'n'
       } else {
