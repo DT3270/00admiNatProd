@@ -52,7 +52,7 @@ class Campo {
 	constructor(nombre, tipo) {
         this.nombre = nombre;
         this.tipo = tipo;
-		this.ancho = 370;
+		this.ancho = 270;
         this.alto = 30;
     }
     
@@ -76,7 +76,7 @@ class Campo {
             secondDiv.style.position = 'relative';
             secondDiv.style.width = 30 + 'px';
             secondDiv.style.top = -32 + 'px';
-            secondDiv.style.left = 345 + 'px';
+            secondDiv.style.left = 245 + 'px';
             secondDiv.style.marginBottom = -25 + 'px';
         
             var newImg = document.createElement('img');
