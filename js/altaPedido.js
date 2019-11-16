@@ -8,52 +8,44 @@
 
     obtenerPedidos();
 
-    document.getElementById('ciclo').addEventListener('keypress', function (e) {
+    document.getElementById('Ciclo').addEventListener('keypress', function (e) {
       var key = e.which || e.keyCode;
       if (key === 13) { // 13 is enter
-        document.getElementById('cliente').focus();
+        document.getElementById('Cliente').focus();
       }
     });
 
-    document.getElementById('cliente').addEventListener('keypress', function (e) {
+    document.getElementById('Cliente').addEventListener('keypress', function (e) {
       var key = e.which || e.keyCode;
       if (key === 13) { // 13 is enter
-        document.getElementById('producto').focus();
+        document.getElementById('Producto').focus();
       }
     });
   
-    document.getElementById('producto').addEventListener('keypress', function (e) {
+    document.getElementById('Producto').addEventListener('keypress', function (e) {
       var key = e.which || e.keyCode;
       if (key === 13) { // 13 is enter
-        document.getElementById('precio').focus();
+        document.getElementById('Precio').focus();
       }
     });
 
-    document.getElementById('precio').addEventListener('keypress', function (e) {
+    document.getElementById('Precio').addEventListener('keypress', function (e) {
       var key = e.which || e.keyCode;
       if (key === 13) { // 13 is enter
-        document.getElementById('porGanancia').focus();
+        document.getElementById('% de ganancia').focus();
       }
     });
 
-    document.getElementById('porGanancia').addEventListener('keypress', function (e) {
+    document.getElementById('% de ganancia').addEventListener('keypress', function (e) {
       var key = e.which || e.keyCode;
       if (key === 13) { // 13 is enter
-        document.getElementById('check1').focus();
+        document.getElementById('Cantidad').focus();
       }
-    }); 
-
-    document.getElementById('check1').addEventListener('keypress', function (e) {
-      var key = e.which || e.keyCode;
-      if (key === 13) { // 13 is enter
-        document.getElementById('cantidad').focus();
-      }
-    }); 
-
+    });
+/*
     document.getElementById('check1').addEventListener('click', function (e) {
       let check1 = document.getElementById('check1');
       console.log('check1', check1.style)
-      console.log('check1', check1.class)
       if (check1.value == 's') {
         check1.value = 'n'
       } else {
@@ -61,24 +53,31 @@
       } 
     }); 
 
-    document.getElementById('cantidad').addEventListener('keypress', function (e) {
+    document.getElementById('check1').addEventListener('keypress', function (e) {
       var key = e.which || e.keyCode;
       if (key === 13) { // 13 is enter
-        document.getElementById('puntos').focus();
+        document.getElementById('Cantidad').focus();
+      }
+    }); 
+*/
+    document.getElementById('Cantidad').addEventListener('keypress', function (e) {
+      var key = e.which || e.keyCode;
+      if (key === 13) { // 13 is enter
+        document.getElementById('Puntos').focus();
       }
     });
   
-    document.getElementById('puntos').addEventListener('keypress', function (e) {
+    document.getElementById('Puntos').addEventListener('keypress', function (e) {
       var key = e.which || e.keyCode;
       if (key === 13) { // 13 is enter
-        document.getElementById('notas').focus();
+        document.getElementById('Notas').focus();
       }
     }); 
 
-    document.getElementById('notas').addEventListener('keypress', function (e) {
+    document.getElementById('Notas').addEventListener('keypress', function (e) {
       var key = e.which || e.keyCode;
       if (key === 13) { // 13 is enter
-        document.getElementById('ciclo').focus();
+        document.getElementById('Ciclo').focus();
         guardarPedido();
       }
     });
@@ -200,16 +199,17 @@
     // Create a request variable and assign a new XMLHttpRequest object to it.
     var request = new XMLHttpRequest();
     var apiUrl = urlServer + "/pedidos";
-    var ciclo = document.getElementById('ciclo');
-    var cliente = document.getElementById('cliente');
-    var producto = document.getElementById('producto');
-    var cantidad = document.getElementById('cantidad');
-    var precio = document.getElementById('precio');
-    var porGanancia = document.getElementById('porGanancia');
-    var paraMi = document.getElementById('check1');
-    var puntos = document.getElementById('puntos');
-    var notas = document.getElementById('notas');
 
+    var ciclo = document.getElementById('Ciclo');
+    var cliente = document.getElementById('Cliente');
+    var producto = document.getElementById('Producto');
+    var cantidad = document.getElementById('Cantidad');
+    var precio = document.getElementById('Precio');
+    var porGanancia = document.getElementById('% de ganancia');
+    var puntos = document.getElementById('Puntos');
+    var notas = document.getElementById('Notas');
+    var paraMi = document.getElementById('check1');
+    
     var miPedido = new Object(); 
     miPedido.ciclo = ciclo.value;
     miPedido.cliente = cliente.value;
@@ -226,9 +226,20 @@
     producto.value = "";
     precio.value = "";
     porGanancia.value = "";
+    paraMi.value = "n";
+    paraMi.src = 'img/circle-regular2.png';
     cantidad.value = "";
     puntos.value = "";
     notas.value = "";
+
+    let inputs = this.document.getElementsByClassName('myInput');
+    for (let i = 0; i < inputs.length; i++) {
+      if(inputs[i].value.length>=1) {
+        inputs[i].nextElementSibling.classList.add('fijar');
+      } else {
+        inputs[i].nextElementSibling.classList.remove('fijar');
+      };
+    };
 
     var miString = JSON.stringify(miPedido);
     request.open("post", apiUrl, true);

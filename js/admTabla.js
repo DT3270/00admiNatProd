@@ -126,35 +126,35 @@ function crearTabla(tit, tab) {
     };
   
     // Total over all pages
-    cantidad = api
+    cantidadTab = api
       .column( 3 )
       .data()
       .reduce( function (a, b) {
         return intVal(a) + intVal(b);
       }, 0 );
 
-      precioUnit = api
+      precioUnitTab = api
       .column( 4 )
       .data()
       .reduce( function (a, b) {
         return intVal(a) + intVal(b);
       }, 0 );
 
-      precio = api
+      precioTab = api
       .column( 5 )
       .data()
       .reduce( function (a, b) {
         return intVal(a) + intVal(b);
       }, 0 );
 
-      ganancia = api
+      gananciaTab = api
       .column( 7 )
       .data()
       .reduce( function (a, b) {
         return intVal(a) + intVal(b);
       }, 0 );
 
-      puntos = api
+      puntosTab = api
       .column( 8 )
       .data()
       .reduce( function (a, b) {
@@ -162,14 +162,14 @@ function crearTabla(tit, tab) {
       }, 0 );
 
     // Total over this page  
-    cantidad = api
+    cantidadTab = api
     .column( 3, { page: 'current'} )
     .data()
     .reduce( function (a, b) {
       return intVal(a) + intVal(b);
     }, 0 );
 
-    precioUnit = api
+    precioUnitTab = api
       .column( 4, { page: 'current'} )
       .data()
       .reduce( function (a, b) {
@@ -190,14 +190,14 @@ function crearTabla(tit, tab) {
         return intVal(a) + intVal(b);
       }, 0 );
 
-    ganancia = api
+    gananciaTab = api
       .column( 8, { page: 'current'} )
       .data()
       .reduce( function (a, b) {
         return intVal(a) + intVal(b);
       }, 0 );
 
-      puntos = api
+      puntosTab = api
       .column( 9, { page: 'current'} )
       .data()
       .reduce( function (a, b) {
@@ -219,11 +219,11 @@ function crearTabla(tit, tab) {
     );
     // Cantidad
     $( api.column( 3 ).footer() ).html(
-      cantidad 
+      cantidadTab 
     );
     // Precio unitario
     $( api.column( 4 ).footer() ).html(
-      '$'+precioUnit.toFixed(2) 
+      '$'+precioUnitTab.toFixed(2) 
     );
     // Porcentaje
     $( api.column( 5 ).footer() ).html(
@@ -239,11 +239,11 @@ function crearTabla(tit, tab) {
     );
     // Ganancia
     $( api.column( 8 ).footer() ).html(
-      '$'+ganancia.toFixed(2) 
+      '$'+gananciaTab.toFixed(2) 
     );
     // Puntos
     $( api.column( 9 ).footer() ).html(
-      puntos
+      puntosTab
     );
     // Notas
     $( api.column( 10 ).footer() ).html(

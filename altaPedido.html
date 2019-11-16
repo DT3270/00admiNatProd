@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<link rel="icon" type="image/png" href="hnet.com-image.ico" />
+	<link rel="stylesheet" href="css/myInput.css">
 	<link rel="stylesheet" href="css/check.css">	
 	<link rel="stylesheet" href="css/select.css">	
 	<link rel="stylesheet" href="css/out.css">
@@ -25,9 +26,7 @@
 	<!-- Link para usar dataTables de jQuery -->
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-	<!-- Link para usar fontAwesome para el checkBox personalizado -->
-	<script src="https://kit.fontawesome.com/a7218086c0.js" crossorigin="anonymous"></script>
-
+    <script src="js/clases.js"></script>
 	<!-- Contenedor principal -->
 	<div style="width: 99%; align-self:center;">
 
@@ -63,68 +62,75 @@
 		</div>
 		
 		<button type="button" class="collapsible" 
-				style="width:100%;height:60px;border-radius: 4px; margin-top: 20px">Nuevo Pedido</button>
+				style="width:100%;height:60px;border-radius: 4px; margin-top: 20px; margin-bottom: 20px">Nuevo Pedido</button>
 
 		<!-- Divisor para el alta de pedidos -->
 		<div class="content" id="dat1" style="width:90%;">
-			
-			<p class="p1" style="position: relative; ">Ciclo</p>
-			<input type="text" id="ciclo" style="width:30%;height:22px; 
-			position: relative;">
-			</input>
 
-			<p class="p1" style="position: relative; ">Cliente</p>
-			<input type="text" id="cliente" style="width:60%;height:22px;
-			position: relative; ">
-			</input>
+			<script>
+	
+				let inputs = this.document.getElementsByClassName('myInput');
+				for (let i = 0; i < inputs.length; i++) {
+					if(inputs[i].value.length>=1) {
+						inputs[i].nextElementSibling.classList.add('fijar');
+					} else {
+						inputs[i].nextElementSibling.classList.remove('fijar');
+					};
+				};
 
-			<p class="p1" style="position: relative; ">Producto</p>
-			<input type="number" id="producto" style="width:30%;height:22px;
-			position: relative; ">
-			</input>
+				let area = document.getElementById('dat1');
+		
+				const ciclo = new Campo('Ciclo', 'text');
+				ciclo.agregar(area, 'i', 'Ingresa el ciclo del pedido');
+				const cliente = new Campo('Cliente', 'text');
+				cliente.agregar(area, 'i', 'Ingresa el cliente para el cual es el pedido');
+				const producto = new Campo('Producto', 'number');
+				producto.agregar(area, 'i', 'Ingresa el número de producto del catalogo');
+				const precio = new Campo('Precio', 'number');
+				precio.agregar(area, 'i', 'Ingresa el precio del producto según el catalogo');
+				const porGanancia = new Campo('% de ganancia', 'number');
+				porGanancia.agregar(area, 'i', 'Ingresa el porcentaje de ganancia que te daría el pedido');
 
-			<p class="p1" style="position: relative; ">Precio</p>
-			<input type="number" id="precio"
-			style="width:30%;height:22px; 
-			position: relative; ">
-			</input>
+				var newDiv = document.createElement('div');
+				newDiv.style.height = 30 + 'px';
+				newDiv.style.marginTop = 5 + 'px';
+				newDiv.style.marginBottom = 10 + 'px';
+				newDiv.style.position = 'relative';
+				var newImg = document.createElement('img');
+				newImg.id = 'check1';
+				newImg.src = 'img/circle-regular2.png';
+				newImg.style.height = 24 + 'px';
+				newImg.style.width = 24 + 'px';
+				newImg.style.margin = 5 + 'px';
+				newImg.style.cssFloat	= 'left'
+				newDiv.addEventListener('click', function(){
+					if (newImg.value == 's') {
+						newImg.value = 'n'
+						newImg.src = 'img/circle-regular2.png';
+					} else {
+						newImg.value = 's'
+						newImg.src = 'img/check-circle-solid2.png';
+					}	
+				});                    
+				newDiv.appendChild(newImg);			
+				var newP = document.createElement('p');
+				newP.style.position = 'relative';
+				newP.style.top = 6 + 'px';
+				newP.style.left = 12 + 'px';
+				newP.textContent = 'Es para mi!';
+				newDiv.appendChild(newP);			
+				area.appendChild(newDiv);			
 
-			<div style="width:60%; height:50px; position: relative;">
-				<p class="p1" style="position: relative; ">% de ganancia</p>
-				<div style="float: left;width:50%;">
-					<input type="number" id="porGanancia"
-					style="width:100%;height:22px; 
-					position: relative; ">
-					</input>
-				</div>
+				const cantidad = new Campo('Cantidad', 'number');
+				cantidad.agregar(area);
+				const puntos = new Campo('Puntos', 'number');
+				puntos.agregar(area, 'i', 'La cantidad de puntos que te da el pedido (por unidad)');
+				const notas = new Campo('Notas', 'text');
+				notas.agregar(area, 'i', 'Una nota que te sea ultil (por ejemplo para identificar el producto)');
 
-				<div style="margin-left: 60%;">
-					<input type="checkbox" class="fancy-check" id="check1" value="n">
-					<label for="check1">			 
-						<span class="p2" style="position: relative; padding: 3px; margin-left: 35px;">Es para mi!</span>
-					</label>
-				</div>
-			</div>
+			</script>
 
-			<p class="p1" style="position: relative; ">Cantidad</p>
-			<input type="number" id="cantidad"
-			style="width:30%;height:22px; 
-			position: relative; ">
-			</input>
-
-			<p class="p1" style="position: relative; ">Puntos</p>
-			<input type="number" id="puntos"
-			style="width:30%;height:22px; 
-			position: relative; ">
-			</input>
-
-			<p class="p1" style="position: relative; ">Notas</p>
-			<input type="text" id="notas"
-			style="width:60%;height:22px; 
-			position: relative; ">
-			</input>
-
-			<div style="position: relative; margin-top: 20px; margin-bottom: 10px">
+			<div style="position: relative; margin-bottom: 10px">
 			<button class="button button1" onclick="guardarPedido();";"
 			style="position: relative;"><b>GUARDAR</b></button>
 			</div>
